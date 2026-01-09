@@ -1,7 +1,7 @@
 <?php
 
-include 'Product.php';
-include 'CartItem.php';
+require_once "Product.php";
+require_once "CartItem.php";
 
 class Cart
 {
@@ -73,7 +73,7 @@ class Cart
     {
         $totalQuantity = 0;
         foreach($this->items as $item){
-            $totalQuantity = $totalQuantity + $this->$item->getQuantity();
+            $totalQuantity = $totalQuantity + $item->getQuantity();
         }
         return $totalQuantity;
     }

@@ -1,6 +1,9 @@
 <?php
 
-include 'Product.php';
+require_once "Product.php";
+require_once "Cart.php";
+
+
 class CartItem
 {
     private Product $product;
@@ -18,6 +21,11 @@ class CartItem
     {
         //TODO $quantity must be increased by one.
         // Bonus: $quantity must not become more than whatever is Product::$availableQuantity
+        if($this->quantity < $this->product->getAvailableQuantity()){
+            $this->quantity += 1;
+        }else{
+            echo 'you can not make quantity more then available quantity';
+        }
         
     }
     public function getProduct(){
@@ -34,5 +42,10 @@ class CartItem
     {
         //TODO $quantity must be increased by one.
         // Bonus: Quantity must not become less than 1
+         if($this->quantity > 1){
+            $this->quantity -= 1;
+        }else{
+            echo 'you mast to do at list one';
+        }
     }
 }

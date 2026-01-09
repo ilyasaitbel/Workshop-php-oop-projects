@@ -1,7 +1,8 @@
 <?php
 
-include 'Cart.php';
-include 'CartItem.php';
+
+require_once "Cart.php";
+require_once "CartItem.php";
 
 class Product
 {
@@ -68,11 +69,11 @@ class Product
             foreach ($cart->getItems() as $item) {
                 if ($this->getId() === $item->getProduct()->getId()) {
                     $item->setQuantity($quantity);
-                    return;
+                    return $item;
                 }
             }
         }
-        $cart->addProduct($this, $quantity);
+        return $cart->addProduct($this, $quantity);
     }
 
     /**
