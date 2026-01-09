@@ -22,9 +22,10 @@ class Product
      * @param int $quantity
      * @return CartItem
      */
-    public function addToCart(Cart $cart, int $quantity): CartItem
+    public function addToCart(Cart $cart, int $quantity)
     {
-        //TODO Implement method
+       
+        
     }
 
     /**
