@@ -19,7 +19,9 @@ class CartItem
         //TODO $quantity must be increased by one.
         // Bonus: $quantity must not become more than whatever is Product::$availableQuantity
     }
-    
+    public function getProduct(){
+        return $this->product;
+    }
     public function getquantity(){
         return $this->quantity;
     }

@@ -54,8 +54,13 @@ class Cart
      */
     public function removeProduct(Product $product)
     {
+        foreach($this->items as $key => $item){
+            if($product->getId() === $item->getProduct()->getId()){
+                unset($this->items[$key]);
+                return $item;
+            }
+        }
         
-        //TODO Implement method
     }
 
     /**
