@@ -8,8 +8,13 @@ class Product
     private float $price;
     private int $availableQuantity;
 
-    // TODO Generate constructor with all properties of the class
-    // TODO Generate getters and setters of properties
+    public function __construct($id, $title, $price, $availableQuantity)
+    {
+        $this->id = $id;
+        $this->title = $title;
+        $this->price = $price;
+        $this->availableQuantity = $availableQuantity;
+    }
 
     /**
      * Add Product $product into cart. If product already exists inside cart
@@ -18,14 +23,48 @@ class Product
      * Bonus: $quantity must not become more than whatever
      * is $availableQuantity of the Product
      *
-     * @param Cart $cart
-     * @param int $quantity
-     * @return CartItem
+     * 
      */
-    public function addToCart(Cart $cart, int $quantity): CartItem
+    public function setId($id)
     {
-        //TODO Implement method
+        $this->id = $id;
     }
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
+    public function setAvailableQuantity($availableQuantity)
+    {
+        $this->availableQuantity = $availableQuantity;
+    }
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function getTitle()
+    {
+        return $this->title;
+    }
+    public function getPrice()
+    {
+        return $this->price;
+    }
+    public function getAvailableQuantity()
+    {
+        return  $this->availableQuantity;
+    }
+    public function addToCart(Cart $cart, int $quantity)
+    {
+        $cart->addProduct($this,$quantity);
+        foreach ($cart->getItems() as $item){
+           if($this->getId() = $item->getProduct()->getId()){
+          $item->getProduct()->getQuantity()=$quantity;
+        }
+    }}
 
     /**
      * Remove product from cart
@@ -34,6 +73,6 @@ class Product
      */
     public function removeFromCart(Cart $cart)
     {
-        //TODO Implement method
+        $cart->removeProduct($this);
     }
 }
