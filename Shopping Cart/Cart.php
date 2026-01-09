@@ -9,7 +9,7 @@ class Cart
      * @var CartItem[]
      */
     private array $items = [];
-    private array $products = [];
+   
 
     // TODO Generate getters and setters of properties
 
@@ -29,14 +29,14 @@ class Cart
 
     public function addProduct(Product $product, int $quantity) {
         
-        foreach($this->items as $item){
-            if($product->getId() === $item->getProduct()->getId()){
-                $item->getProduct()->setAvailableQuantity($item->getProduct()->getAvailableQuantity() - $quantity);
-                return $item;
-            }
+        // foreach($this->items as $item){
+        //     if($product->getId() === $item->getProduct()->getId()){
+        //         $item->getProduct()->setAvailableQuantity($item->getProduct()->getAvailableQuantity() - $quantity);
+        //         return $item;
+        //     }
             
-        }
-        $item = new CartItem($item , $quantity); 
+        // }
+        $item = new CartItem($product , $quantity); 
         $this->items[] = $item; 
         return $item;
     }
@@ -69,11 +69,11 @@ class Cart
      *
      * @return int
      */
-    public function getTotalQuantity($items)
+    public function getTotalQuantity()
     {
         $totalQuantity = 0;
-        foreach($items as $item){
-            $totalQuantity = $totalQuantity + $this->$item->getquantity();
+        foreach($this->items as $item){
+            $totalQuantity = $totalQuantity + $this->$item->getQuantity();
         }
         return $totalQuantity;
     }
@@ -83,11 +83,11 @@ class Cart
      *
      * @return float
      */
-    public function getTotalSum($products): float 
+    public function getTotalSum(): float 
     {
         $totalSum = 0;
-        foreach($products as $product){
-            $totalSum = $totalSum + $this->$product->getprice();
+        foreach($this->items as $product){
+            $totalSum = $totalSum + ($product->getProduct()->getPrice() * $product->getQuantity()) ;
         }
         return $totalSum;
     }
