@@ -1,6 +1,6 @@
 <?php
 
-
+include 'Cart.php';
 class Product
 {
     private int $id;
@@ -61,7 +61,7 @@ class Product
     {
         $cart->addProduct($this,$quantity);
         foreach ($cart->getItems() as $item){
-           if($this->getId() = $item->getProduct()->getId()){
+           if($this->getId() === $item->getProduct()->getId()){
           $item->getProduct()->getQuantity()=$quantity;
         }
     }}

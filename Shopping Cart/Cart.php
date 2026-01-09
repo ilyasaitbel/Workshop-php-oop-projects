@@ -1,5 +1,6 @@
 <?php
 
+include 'Product.php';
 
 class Cart
 {
@@ -27,8 +28,8 @@ class Cart
     public function addProduct(Product $product, int $quantity) {
         
         foreach($this->items as $item){
-            if($product->getId() === $item->getId()){
-                $item->availableQuantity =   $item->availableQuantity - $quantity;
+            if($product->getId() === $item->getProduct()->getId()){
+                $item->getProduct()->getAvailableQuantity() = $item->getProduct()->getAvailableQuantity() - $quantity;
                 return $item;
             }
             
