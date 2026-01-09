@@ -22,10 +22,29 @@ class Cart
      * @param int $quantity
      * @return CartItem
      */
-    public function addProduct(Product $product, int $quantity): CartItem
-    {
-        //TODO Implement method
+
+
+
+    public function addProduct(Product $product, int $quantity) {
+        
+        foreach($this->items as $item){
+            if($product->getId() === $item->getId()){
+                $item->availableQuantity =   $item->availableQuantity - $quantity;
+                return $item;
+            }
+            
+        }
+        $item = new CartItem($item , $quantity); 
+        $this->items[] = $item; 
+        return $item;
     }
+
+    public function getItems()
+    {
+        return $this->items;
+    }
+   
+
 
     /**
      * Remove product from cart
