@@ -7,6 +7,7 @@ class Cart
      * @var CartItem[]
      */
     private array $items = [];
+    private array $products = [];
 
     // TODO Generate getters and setters of properties
 
@@ -33,6 +34,7 @@ class Cart
      */
     public function removeProduct(Product $product)
     {
+        
         //TODO Implement method
     }
 
@@ -41,9 +43,13 @@ class Cart
      *
      * @return int
      */
-    public function getTotalQuantity(): int
+    public function getTotalQuantity($items)
     {
-        //TODO Implement method
+        $totalQuantity = 0;
+        foreach($items as $item){
+            $totalQuantity = $totalQuantity + $this->$item->getquantity();
+        }
+        return $totalQuantity;
     }
 
     /**
@@ -51,8 +57,12 @@ class Cart
      *
      * @return float
      */
-    public function getTotalSum(): float
+    public function getTotalSum($products): float 
     {
-        //TODO Implement method
+        $totalSum = 0;
+        foreach($products as $product){
+            $totalSum = $totalSum + $this->$product->getprice();
+        }
+        return $totalSum;
     }
 }

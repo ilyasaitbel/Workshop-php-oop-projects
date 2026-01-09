@@ -26,6 +26,9 @@ class Product
     {
         //TODO Implement method
     }
+    public function getprice(){
+        return $this->price;
+    }
 
     /**
      * Remove product from cart
