@@ -1,6 +1,8 @@
 <?php
 
 include 'Cart.php';
+include 'CartItem.php';
+
 class Product
 {
     private int $id;
@@ -57,14 +59,21 @@ class Product
     {
         return  $this->availableQuantity;
     }
+
     public function addToCart(Cart $cart, int $quantity)
     {
-        $cart->addProduct($this,$quantity);
-        foreach ($cart->getItems() as $item){
-           if($this->getId() === $item->getProduct()->getId()){
-          $item->getProduct()->getQuantity()=$quantity;
+
+        if (!($quantity > $this->availableQuantity)) {
+
+            foreach ($cart->getItems() as $item) {
+                if ($this->getId() === $item->getProduct()->getId()) {
+                    $item->setQuantity($quantity);
+                    return;
+                }
+            }
         }
-    }}
+        $cart->addProduct($this, $quantity);
+    }
 
     /**
      * Remove product from cart

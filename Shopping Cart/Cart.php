@@ -1,6 +1,7 @@
 <?php
 
 include 'Product.php';
+include 'CartItem.php';
 
 class Cart
 {
@@ -30,7 +31,7 @@ class Cart
         
         foreach($this->items as $item){
             if($product->getId() === $item->getProduct()->getId()){
-                $item->getProduct()->getAvailableQuantity() = $item->getProduct()->getAvailableQuantity() - $quantity;
+                $item->getProduct()->setAvailableQuantity($item->getProduct()->getAvailableQuantity() - $quantity);
                 return $item;
             }
             

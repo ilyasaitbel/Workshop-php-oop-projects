@@ -1,6 +1,6 @@
 <?php
 
-
+include 'Product.php';
 class CartItem
 {
     private Product $product;
@@ -8,7 +8,7 @@ class CartItem
 
     // TODO Generate constructor with all properties of the class
     // TODO Generate getters and setters of properties
-    public function __construct($product , $quantity)
+    public function __construct( $product , $quantity)
     {
         $this->product = $product;
         $this->quantity = $quantity;
@@ -22,8 +22,11 @@ class CartItem
     public function getProduct(){
         return $this->product;
     }
-    public function getquantity(){
+    public function getQuantity(){
         return $this->quantity;
+    }
+    public function setQuantity($value){
+         $this->quantity = $value;
     }
 
     public function decreaseQuantity()
