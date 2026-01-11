@@ -1,1 +1,1 @@
-# Workspace_php-oop-projects
+# Workshop_php-oop-projects
